@@ -13,12 +13,14 @@ import androidx.navigation.compose.rememberNavController
 import com.example.firebase.ui.theme.FireBaseTheme
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : ComponentActivity() {
 
     private lateinit var navHostController: NavHostController
     private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +37,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = Color.DarkGray
                 ){
-                    NavigationWrapper(navHostController, auth)
+                    NavigationWrapper(navHostController, auth, db)
                 }
             }
         }
